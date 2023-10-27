@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shop Now</title>
+    <style>
+        header {
+            background-color: #b33976;
+            text-align: center;
+            font-size: 2em;
+        }
+        nav {
+            background-color: #05ac45;
+            padding: 10px;
+            text-align: center;
+        }
+        nav button {
+            background-color: rgb(129, 121, 127);
+            color: rgb(3, 1, 3);
+            margin: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        nav img{
+            height: 16px;
+            width: 16px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .burner-image {
+            position: relative;
+            text-align: center;
+        }
+        .burner-image img {
+            max-width: 100%;
+            height: 420px ;
+            width: 1000px;
+        }
+        .burner-image h2  {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1; /* Ensure text is on top of the image */
+            text-align: center;
+            color: white;
+            font-size: 70px;
+            background: rgba(15, 34, 146, 0.5); /* Add a semi-transparent background */
+            padding: 10px;
+        }
+        .burner-image h3  {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1; /* Ensure text is on top of the image */
+            text-align: center;
+            color: white;
+            font-size: 50px;
+            background: rgba(160, 64, 152, 0.5); /* Add a semi-transparent background */
+            padding: 10px;
+        }
+        .button-orange {
+            background-color: orange;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            display: inline-block;
+            width: 30%;
+        }
+        .image-container {
+            background-color: orange;
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 2px dashed #ccc;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            background-color: aquamarine;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .plus-sign {
+            font-size: 3em;
+            color: #ccc;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .file-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+        .comment-button, .add-to-cart-button {
+            background-color: orange;
+            color: #ffffff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        form {
+            background-color: rgb(202, 181, 155);
+            text-align: center;
+        }
+       
+        footer{
+            background-color: #05ac45;
+            text-align: center;
+        }
+        footer button {
+            background-color: rgb(5, 2, 184);
+            color: rgb(243, 243, 243);
+            margin: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>Social Media Login</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID">
+    <script>
+        // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCNZ5pnWi3cCNcRp0uO-ur9kCMKAYeQ3LQ",
+  authDomain: "manuixtech-sales.firebaseapp.com",
+  projectId: "manuixtech-sales",
+  storageBucket: "manuixtech-sales.appspot.com",
+  messagingSenderId: "732486964855",
+  appId: "1:732486964855:web:b187b8ff7747a616715872",
+  measurementId: "G-1R2E6ME0TR"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <!-- Add other Firebase services you need (e.g., authentication, database, etc.) -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
+    <!-- Add your custom JavaScript file that interacts with Firebase -->
+    <script src="path/to/your/script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>ManuixTech Sales</h1>
+    </header>
+    <nav>
+    <div class="navbar">
+        <a href="#" onclick="showHome()"><button><img src="home.png"> Home</button></a>
+        <a href="#" onclick="showProducts()"><button><img src="products.png"> Products</button></a>
+        <a href="#" onclick="showCart()"><button><img src="cart.png"> Cart</button></a>
+        <a href="#" onclick="showProfile()"><button><img src="profile.png"> User Profile</button></a>
+        <a href="#" onclick="showOrderHistory()"><button><img src="h.png"> Order History</button></a>
+    </div>
+    
+</nav>
+    <main>
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search for a product...">
+            <button class="button-orange" type="submit">Search</button>
+            
+        </form>
+            <div class="container" id="home">
+                <!--<class="container" id="home">-->
+                    <div class="burner-image">
+                <h2>Hello!&#x1F44B; Welcome to ManuixTech sales</h2>
+                <h3>Dealers in Laptops&#x1F4BB; and Destops&#x1F5A5; devices and parts</h3>
+                <img src="welcome-image.png" alt="Welcome Image">
+                    </div>
+            </div>
+            <div class="container" id="productsSection" style="display:none;">
+                <h2>Add Products</h2>
+                <!--<div class="image-container">
+                    <div class="plus-sign">+</div>
+                    <img id="previewImage" src="#" alt="Add Image">
+                    <input type="file" class="file-input" accept="image/*" onchange="previewImage(event)">
+                </div>-->
+                <input type="file" id="imageInput" accept="image/*"><br>
+                <img id="previewImage" src="#" alt="Preview" style="max-width: 300px; max-height: 300px;"><br>
+                <input type="text" id="productName" placeholder="Product Name"><br>
+                <input type="text" id="productPrice" placeholder="Price"><br>
+                <input type="text" id="productDescription" placeholder="Product Description"><br>
+                <script>
+                    document.getElementById('imageInput').addEventListener('change', function() {
+                        var file = this.files[0];
+                        var reader = new FileReader();
+            
+                        reader.onload = function(e) {
+                            document.getElementById('previewImage').src = e.target.result;
+                        }
+            
+                        reader.readAsDataURL(file);
+                    });
+                </script><br>
+                
+                <button class="button-orange" onclick="addProduct()">Add Product</button>
+                <button class="button-orange" onclick="showProductList()">View Products</button>
+            </div>
+        
+            <div class="container" id="productListSection" style="display:none;">
+                <h2>Products</h2>
+                <div id="productList"></div>
+            </div>
+        
+            <div class="container" id="cartSection" style="display:none;">
+                <h2>Shopping Cart</h2>
+                <div id="cartItems"></div>
+                <button class="button-orange" onclick="orderProducts()">Order Now</button>
+            </div>
+        
+            <div class="container" id="profileSection" style="display:none;">
+                <h2>User Profile</h2>
+                <div id="userProfile"></div>
+            </div>
+        
+            <div class="container" id="orderHistorySection" style="display:none;">
+                <h2>Order History</h2>
+                <div id="orderHistory"></div>
+            </div>
+            
+            
+            <script>
+                 function performSearch(query) {
+    // Modify this function to search through your products and return matching results
+    query = query.toLowerCase();
+
+    return products.filter(product => {
+        const productName = product.name.toLowerCase();
+        return productName.includes(query);
+    });
+}
+document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const searchQuery = document.getElementById('searchInput').value;
+    const searchResults = performSearch(searchQuery);
+
+    // Display search results (modify this function based on your needs)
+    displaySearchResults(searchResults);
+});
+function displaySearchResults(results) {
+    const searchResultsDiv = document.getElementById('searchResults');
+    searchResultsDiv.innerHTML = '';
+
+    if (results.length > 0) {
+        results.forEach(result => {
+            const resultElement = document.createElement('div');
+            resultElement.textContent = result.name + ' - KSH ' + result.price; // Display product name and price
+            searchResultsDiv.appendChild(resultElement);
+        });
+       
+
+    } else {
+        searchResultsDiv.innerHTML = '<p>No results found.</p>';
+    }
+}
+        
+                const products = [];
+                const cart = [];
+                const orders = [];
+        
+                function showHome() {
+                    hideAllSections();
+                    document.getElementById('home').style.display = 'block';
+                }
+        
+                function showProducts() {
+                    hideAllSections();
+                    document.getElementById('productsSection').style.display = 'block';
+                }
+        
+                function addProduct() {
+                    const productName = document.getElementById('productName').value;
+                    const previewImage = document.getElementById('previewImage').src;
+                    const productDescription = document.getElementById('productDescription').value;
+                    const productPrice = document.getElementById('productPrice').value;
+                    products.push({ name: productName, image: previewImage, description: productDescription, price: productPrice });
+                    alert(`Product ${productName} added successfully!`);
+                    showProducts();
+                }
+        
+                function showProductList() {
+                    hideAllSections();
+                    document.getElementById('productListSection').style.display = 'block';
+                    displayProductList();
+                }
+        
+                function displayProductList() {
+                    const productListDiv = document.getElementById('productList');
+                    productListDiv.innerHTML = '';
+        
+                    if (products.length > 0) {
+                        for (const product of products) {
+                            productListDiv.innerHTML += `
+                                <div class="product-card">
+                                    <img src="${product.image}" alt="${product.name}">
+                                    <h3>${product.name}</h3>
+                                    <h4>${product.description}</h4>
+                                    <p>Price: KSH ${product.price}</p>
+                                    <button class="button-orange" onclick="addToCart(${products.indexOf(product)})">Add to Cart</button>
+                                </div>
+                            `;
+                        }
+                    } else {
+                        productListDiv.innerHTML = '<p>No products available.</p>';
+                    }
+                }
+        
+                function addToCart(index) {
+                    const selectedProduct = products[index];
+                    cart.push(selectedProduct);
+                    alert(`Product ${selectedProduct.name} added to cart.`);
+                    displayProductList();
+                }
+        /*cart*/
+                function showCart() {
+                    hideAllSections();
+                    document.getElementById('cartSection').style.display = 'block';
+                    displayCartItems();
+                }
+        
+                function displayCartItems() {
+                    const cartItemsDiv = document.getElementById('cartItems');
+                    cartItemsDiv.innerHTML = '';
+        
+                    if (cart.length > 0) {
+                        for (const item of cart) {
+                            cartItemsDiv.innerHTML += `
+                                <div class="cart-item">
+                                    <img src="${item.image}" alt="${item.name}">
+                                    <div>
+                                        <h3>${item.name}</h3>
+                                        <h4>${item.description}</h4>
+                                        <p>Price: KSH ${item.price}</p>
+                                    </div>
+                                    <p>Quantity: 1</p>
+                                    <button class="button-orange" onclick="removeFromCart(${cart.indexOf(item)})">Remove</button>
+                                </div>
+                            `;
+                        }
+                    } else {
+                        cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+                    }
+                }
+        
+                function removeFromCart(index) {
+                    const removedProduct = cart[index];
+                    cart.splice(index, 1);
+                    alert(`Product ${removedProduct.name} removed from cart.`);
+                    displayCartItems();
+                }
+        
+                function orderProducts() {
+                    let total = 0;
+                    for (const item of cart) {
+                        total += parseFloat(item.price);
+                    }
+        
+                    const quantity = parseInt(prompt("Enter the quantity/amount you want:"));
+                    const orderTotal = total * quantity;
+                    const order = {
+        items: cart.slice(), // Create a copy of the cart items
+        total: orderTotal
+    };
+
+    orders.push(order);
+                    const confirmOrder = confirm(`Total Price: KSH ${orderTotal}\nDo you want to confirm the order?`);
+                    
+        
+                    if (confirmOrder) {
+                        /*orders.push({ items: cart, total: orderTotal });*/
+                        orders.push({ items: cart.slice(), total: orderTotal });
+                        alert('Order successful!');
+                        cart.length = 0;
+                        displayCartItems();
+                        displayOrderHistory();
+                    } else {
+                        alert('Order cancelled.');
+                    }
+                }
+        
+                function showProfile() {
+                    hideAllSections();
+                    document.getElementById('profileSection').style.display = 'block';
+                    const userProfileDiv = document.getElementById('userProfile');
+                    if (userIsLoggedIn()) {
+                        userProfileDiv.innerHTML = `
+                            <p>Name: John Doe</p>
+                            <p>Email: john.doe@example.com</p>
+                            <p>Address: 123 Main Street, Cityville</p>
+                        `;
+                    } else {
+                        const loginButton = document.createElement('button');
+                        loginButton.textContent = 'Login';
+                        loginButton.onclick = function() { alert('Redirect to login page'); };
+                        const registerButton = document.createElement('button');
+                        registerButton.textContent = 'Register';
+                        registerButton.onclick = function() { alert('Redirect to registration page'); };
+                        userProfileDiv.innerHTML = '<p>Please login or register to view your profile.</p>';
+                        userProfileDiv.appendChild(loginButton);
+                        userProfileDiv.appendChild(registerButton);
+                    }
+                    userProfileDiv.style.display = 'block';
+                }
+        
+                function userIsLoggedIn() {
+                    return true;
+                }
+        /*orederhistory*/
+                function showOrderHistory() {
+                    hideAllSections();
+                    document.getElementById('orderHistorySection').style.display = 'block';
+                    displayOrderHistory();
+                }
+        
+        
+                function displayOrderHistory() {
+                    hideAllSections();
+                    document.getElementById('orderHistorySection').style.display = 'block';
+                    const orderHistoryDiv = document.getElementById('orderHistory');
+                    if (orders.length > 0) {
+                        orderHistoryDiv.innerHTML = '';
+                        for (const order of orders) {
+                            orderHistoryDiv.innerHTML += `
+                                <div class="order-item">
+                                    <img src="${item.image}" alt="${item.name}">
+                                    <h3>Order ID: ${orders.indexOf(order)}</h3>
+                                    <p>Total: KSH ${order.total}</p>
+                                </div>
+                            `;
+                        }
+                    } else {
+                        orderHistoryDiv.innerHTML = '<p>No orders available.</p>';
+                    }
+                    orderHistoryDiv.style.display = 'block';
+                }
+        </script>
+        <script>
+                function hideAllSections() {
+                    const sections = document.querySelectorAll('.container');
+                    for (const section of sections) {
+                        section.style.display = 'none';
+                    }
+                }
+               
+            </script>
+           
+    <footer>
+        <div class="social-media">
+            <footer>
+                <div class="social-media">
+                    <p> Reach us on: </p>
+                    <a href="https://instagram.com/manuixke?igshid=MzMyNGUyNmU2YQ==" target="_blank"><button>Instagram</button></a>
+                    <a href="https://x.com/manuix_ke?t=eNQyLFaoMJFuVd97LsULqw&s=09" target="_blank"><button>Twitter/X</button></a>
+                    <a href="https://www.facebook.com/profile.php?id=100086061236075" target="_blank"><button>Facebook</button></a>
+                    <a href="https://youtube.com/@ManuixKE?si=WCKRzzWWwOR85snG" target="_blank"><button>Youtube</button></a>
+                    <a href="mailto:king4@gmail.com"><button>Email</button></a>
+                    <a href="https://wa.me/254711719689" target="_blank"><button>WhatsApp</button></a>
+                    <a href="tel:254711719689"><button>Call</button></a>
+               
+            
+            <!-- Add social media buttons here -->
+        </div>
+        <div class="about-us">
+            <button>About Us</button>
+            
+        </div>
+        <p>Terms and Conditions apply</p>
+    </footer>
+
+    <script>
+      
+        // Add your JavaScript here
+    </script>
+</body>
+</html>
